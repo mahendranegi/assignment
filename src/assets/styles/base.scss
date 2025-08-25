@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #343A40;
+    font-size: 13px;
+    overflow: hidden;
+    line-height: normal;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    & .ant-btn-color-primary, & .ant-switch.ant-switch-checked{
+        background: #2570CA;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+    margin: 0 !important;
+}
+
+ul {
+    list-style: none;
+}

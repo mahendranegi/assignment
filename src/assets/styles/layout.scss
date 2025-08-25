@@ -1,0 +1,526 @@
+/* TOKENS (colors, spacing) */
+$primary: #1170CA;
+$primary-strong: #2570CA;
+
+$brand-blue-900: #143e6f;
+$brand-blue-800: #195396;
+
+$gray-100: #F8F9FA;
+$gray-200: #E9ECEF;
+$gray-300: #CED4DA;
+$gray-350: #C8CCD2;
+$gray-600: #868E96;
+$gray-700: #656E7A;
+
+$text-color: #192435;
+
+/*   MIXINS*/
+@mixin flex($justify: flex-start, $align: stretch, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin circle($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin icon-btn($size: 40px, $border: 1px solid $gray-350, $bg: transparent) {
+  @include circle($size);
+  border: $border;
+  background: $bg;
+  padding: 12px;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+@mixin icon-btn-active {
+  border: 1px solid $primary;
+  background: $primary;
+
+  i { color: #fff; }
+}
+
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* COMPONENT STYLES */
+
+.HeaderBar {
+  @include flex(space-between, center, 32px);
+  padding: 8px 16px;
+  width: 100%;
+
+  aside {
+    @include flex(space-between, center, 160px);
+    width: 100%;
+  }
+
+  .ant-input-affix-wrapper {
+    width: 360px;
+    height: 40px;
+    background: $gray-200;
+  }
+
+  .bx-search {
+    font-size: 24px;
+    color: $gray-700;
+    margin: 3px 0 0;
+  }
+
+  .ant-input:placeholder-shown {
+    color: #999FA7;
+    font-size: 16px;
+  }
+}
+
+.HeaderBar > div {
+  min-width: 438px;
+  @include flex(space-between, center, 32px);
+
+  img { height: 34px; }
+}
+
+.HeaderBar > div > div {
+  @include flex(flex-end, center, 20px);
+  position: relative;
+  width: 100%;
+
+  span {
+    @include icon-btn(40px, 1px solid $gray-350);
+
+    &:hover { @include icon-btn-active; }
+    &.active { @include icon-btn-active; }
+  }
+
+  i {
+    font-size: 20px;
+    color: $gray-700;
+  }
+}
+
+/* vertical divider */
+em {
+  background: $gray-350;
+  width: 2px;
+  height: 32px;
+  left: 0;
+}
+
+.profile {
+  @include flex(flex-start, center, 8px);
+  width: max-content;
+  color: $text-color;
+
+  p { font-size: 12px; }
+}
+
+/* Dashboard Layout */
+.dashBoardSec {
+  @include flex(flex-start);
+}
+
+/* Left panel */
+.leftPannel {
+  background: $brand-blue-900;
+  min-width: 56px;
+  height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    @include flex(center, center);
+    min-height: 56px;
+    cursor: pointer;
+    transition: 590ms;
+
+    span { @include circle(38px); }
+
+    i {
+      font-size: 24px;
+      color: #fff;
+    }
+
+    /* active + hover styles */
+    span.active,
+    &:hover span {
+      background: $brand-blue-800;
+      border-radius: 50%;
+    }
+  }
+}
+
+.dashboardSec {
+  @include flex(space-between);
+  gap: 0;
+
+  > div:first-child { width: 100%; }
+}
+
+.notesTabs {
+  min-width: 438px;
+  width: 438px;
+}
+
+.BreadCrumbSec {
+  @include flex(space-between, center, 20px);
+  width: 100%;
+  background: $gray-100;
+  border: 1px solid $gray-200;
+  padding: 8px 16px;
+  font-weight: 590;
+
+  ol { align-items: center; }
+
+  li {
+    @include flex(flex-start, center);
+  }
+
+  li:nth-child(2) { color: #1F5FAC; }
+  .active { color: #1F5FAC; }
+
+  .bx-chevron-right { font-size: 20px; }
+
+  button {
+    padding: 8px 16px;
+    background: #fff;
+    color: #343A40;
+    border: 1px solid $gray-300;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 590;
+  }
+
+  > div:last-child {
+    @include flex(flex-start, center, 10px);
+  }
+}
+
+/* Flex divider section */
+.flexDevider {
+  @include flex(space-between, center, 20px);
+  margin: 0 0 16px;
+  padding: 16px 16px 0;
+}
+
+/* Main container making inner scrollable */
+.mainDiv {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 56px);
+  padding: 0;
+
+  .infoUser {
+    flex: 1;
+    overflow-y: auto;
+  }
+}
+
+/* Info user panel */
+.infoUser {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid $gray-200;
+
+  .contactList {
+    @include flex(flex-start, center, 8px);
+
+    > span {
+      @include circle(64px);
+      background: #CCE8DC;
+
+      i {
+        color: #31A171;
+        font-size: 27px;
+      }
+    }
+  }
+
+  h4 {
+    font-size: 18px;
+    @include flex(flex-start, center, 8px);
+
+    img {
+      height: max-content;
+      cursor: pointer;
+    }
+  }
+
+  .contactInfoSec p {
+    padding: 8px 0 0;
+    color: #495057;
+    @include flex(flex-start, center, 24px);
+    font-weight: 400;
+  }
+
+  .TabsSection { padding: 16px 0 16px; }
+  > div:not(:last-child) { border-bottom: 1px solid $gray-200; }
+}
+
+/* Contact listed section */
+.contactInfoSec {
+  @include flex(space-between, stretch, 32px);
+  padding: 16px;
+
+  > div:last-child {
+    @include flex(flex-end, center, 10px);
+    height: fit-content;
+
+    .ant-btn-dangerous {
+      background: #FCEAEA;
+      color: #E03131;
+      font-size: 13px;
+      font-weight: 510;
+      border: 1px solid #F6C1C1;
+    }
+
+    > span {
+      @include circle(32px);
+      border-radius: 6px;
+      border: 1px solid $gray-300;
+      cursor: pointer;
+
+      i {
+        color: $gray-700;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+/* Email info */
+.emailInfo {
+  strong {
+    @include flex(flex-start, center, 8px);
+    color: #343A40;
+
+    i { font-size: 17px; }
+  }
+
+  a {
+    @include flex(flex-start, center, 8px);
+    color: #1F5FAC;
+    font-weight: 590;
+    cursor: pointer;
+
+    i {
+      color: $gray-700;
+      font-size: 20px;
+    }
+  }
+
+  div { width: 100%; }
+
+  div:first-child { @include flex(flex-start, stretch, 24px); }
+
+  div:last-child {
+    @include flex(flex-end, center, 20px);
+  }
+}
+
+/* List data grid */
+.listData {
+  padding: 0 16px;
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: space-between;
+
+    li {
+      @include flex(flex-start, center, 20px);
+      width: 48%;
+
+      strong, span { @include ellipsis; width: 100%; }
+    }
+  }
+}
+
+/* Tabs component */
+.TabsSection {
+  .ant-tabs-nav-wrap { background: #e9ecef; }
+  .ant-tabs-tab-btn { font-weight: 590; }
+  .ant-tabs-tab { padding: 15px; border: 1px solid transparent; }
+  .ant-tabs-tab-active {
+    background: #fff;
+    border: 1px solid $gray-200;
+  }
+  .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn { color: $primary; }
+}
+
+/* Cards */
+.cardsSection {
+  padding: 0 16px;
+
+  aside {
+    border: 1px solid $gray-200;
+    padding: 12px 16px;
+    border-radius: 6px;
+    @include flex(flex-start, stretch, 20px);
+
+    .infoSec {
+      @include flex(flex-start, stretch, 48px);
+      width: 100%;
+
+      li p {
+        color: #000;
+        font-weight: 590;
+        line-height: normal;
+      }
+
+      small {
+        color: $gray-600;
+        font-size: 12px;
+        display: block;
+        padding: 2px 0 0;
+      }
+
+      > div:first-child {
+        @include flex(flex-start, center, 8px);
+
+        span {
+          @include circle(42px);
+          background: #FBDDB3;
+          color: #F08C00;
+          font-size: 16px;
+          text-transform: uppercase;
+        }
+      }
+
+      > div:last-child {
+        li {
+          @include flex(flex-start, center, 8px);
+          font-size: 12px;
+          color: #495057;
+        }
+      }
+    }
+
+    .actionBtns {
+      @include flex(space-between, center, 20px);
+      width: 100%;
+      white-space: nowrap;
+
+      .ant-tag {
+        color: #495057;
+        background: $gray-100;
+        border: 1px solid #F1F3F5;
+        border-radius: 1px;
+      }
+    }
+  }
+
+  aside:not(:last-child) { margin: 0 0 16px; }
+}
+
+/* News header */
+.Newsheader {
+  padding: 16px;
+  background: #fff;
+  @include flex(flex-start, center, 24px);
+  border-top: 1px solid #F1F3F5;
+
+  span {
+    @include circle(40px);
+    background: #E6F1FF;
+
+    i {
+      color: $primary-strong;
+      font-size: 20px;
+    }
+  }
+}
+
+/* News cards */
+.coverBorderNewsCards {
+  padding: 16px 16px 20px;
+  border: 1px solid $gray-200;
+  border-radius: 6px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  > div:first-child {
+    @include flex(flex-start, center, 10px);
+
+    p {
+      @include flex(flex-start, center, 4px);
+
+      span {
+        @include circle(20px);
+        background: #E6F1FF;
+        color: $primary-strong;
+
+        i { font-size: 12px; }
+      }
+    }
+  }
+
+  a {
+    color: $primary-strong;
+    cursor: pointer;
+    font-weight: 590;
+  }
+
+  > div:last-child {
+    @include flex(space-between, center, 16px);
+    color: #000;
+    font-weight: 400;
+
+    div { @include flex(flex-start, center, 8px); }
+  }
+}
+
+.coverBorderNewsCards:not(:last-child) { margin: 0 0 16px; }
+
+.Newsheader + .TabsSection {
+  .ant-tabs-nav { margin: 0; }
+  .ant-tabs-content-holder {
+    padding: 16px;
+    background: $gray-100;
+  }
+  .ant-tabs-top {
+    display: flex;
+    height: calc(100vh - 80px);
+    flex-direction: column;
+
+    .ant-tabs-content-holder {
+      flex: 1;
+      overflow-y: auto;
+    }
+  }
+}
+
+/* Shared flex layout */
+.flexDisplay {
+  @include flex(space-between, center, 20px);
+  padding: 0 16px 16px;
+
+  > div:last-child {
+    @include flex(flex-end, center, 20px);
+  }
+}
+
+.mobileIcon { display: none; }
+
+/* Drawer / modal tweaks */
+.userDetailsModal {
+  .ant-drawer-header-title { flex-direction: row-reverse; }
+
+  .ant-input {
+    height: 40px;
+    border-radius: 4px;
+  }
+}

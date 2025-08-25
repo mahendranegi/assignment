@@ -1,16 +1,18 @@
 import Header from "./components/Header";
 import 'antd/dist/reset.css'; // for Ant Design v5+
-import "./assets/styles.scss";
+import "./assets/styles/styles.scss";
 import LeftNavbar from "./components/LeftNavbar";
 import { Breadcrumb } from "antd";
 import Breadcrumbs from "./components/Breadcrumbs";
 import InformationUser from "./components/InformationUser";
 import InfoTabs from "./components/InfoTabs";
 import News from "./components/News";
+import { CandidateProvider } from "./store/candidateStore";
 
 
 function App() {
   return (
+    <CandidateProvider>
     <div className="dashBoardSec">
     <LeftNavbar />
     <div style={{width:'100%'}}>
@@ -30,6 +32,7 @@ function App() {
     </div>
     
     </div>
+    </CandidateProvider>
   );
 }
 

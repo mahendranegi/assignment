@@ -9,13 +9,13 @@ function Breadcrumbs() {
       separator={<i class='bx  bx-chevron-right'  ></i>}  // custom separator
       items={[
         {
-          title: <a href="/candidates">Candidates</a>,
+          title: <a href="/candidates" className='active'>Candidates</a>,
         },
         {
           title: <a href="/candidates/roberthardy">Robert Hardy</a>,
         },
         {
-          title: <span style={{ fontWeight: 500 }}>ID - 231</span>,
+          title: <a>ID - 231</a>,
         },
       ]}
     />

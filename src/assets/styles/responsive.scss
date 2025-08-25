@@ -1,0 +1,101 @@
+@media only screen and (max-width: 992px) {
+    .mainDiv{
+            height: calc(100vh - 102px);
+    }
+    .mobileIcon{display: block;}
+    .BreadCrumbSec{
+        & nav a{
+            font-size: 13px;
+        }
+    }
+    nav{
+            display: flex;
+    flex-direction: column;
+    gap: 16px;
+    & a{
+        font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    }
+    }
+.menuDrawer .ant-drawer-header{
+    border: none;
+    padding: 0;
+    & .anticon-close{
+        font-size: 28px;
+    }
+    & .ant-drawer-close{
+        position: absolute;
+    top: 16px;
+    right: 8px;
+
+    }
+    & .bx{
+        margin: 2px 0 0;
+    }
+}
+    .leftPannel{
+        display: none;
+    }
+   .candidate-details{
+    padding: 16px 0 0;
+   }
+   .listData {
+    & ul li{
+        width: 100%;
+    }
+   }
+   .flexDisplay{
+    flex-direction: column;
+   }
+   .BreadCrumbSec {
+    & button{
+        font-size: 12px;
+    }
+   }
+.HeaderBar{
+    & > div {
+        display: none;
+    }
+    & aside{
+            flex-direction: column-reverse;
+            gap: 12px;
+            align-items: flex-start;
+            & > div{
+                display: flex;
+                gap: 16px;
+                flex-direction: row-reverse;
+            }
+    }
+    flex-direction: column;
+    & .ant-input-affix-wrapper{
+        width: 100%;
+    }
+}
+.notesTabs,.emailInfo{
+    display: none;
+}
+.contactInfoSec,.BreadCrumbSec{
+    align-items: flex-start;
+    flex-direction: column;
+    & > div:last-child{
+        justify-content: flex-start;
+    }
+}
+.cardsSection aside{
+    &  .infoSec{
+            gap: 16px;
+           & div:last-child li{
+            & .bx{
+                margin: 3px 0 0;
+            }
+ align-items: flex-start;
+           }
+    }
+    flex-direction: column;
+    & .actionBtns{
+            justify-content: end;
+    }
+}
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import "../assets/styles.scss";
+// import "../assets/styles.scss";
 
 function LeftNavbar() {
   return (
